@@ -1,0 +1,28 @@
+import streamlit as st
+from fetch_youtube import fetch_youtube_videos
+# from fetch_reddit import fetch_reddit_posts
+# from fetch_hn import fetch_hackernews_stories
+
+st.set_page_config(page_title="Tech Tracker", layout="wide")
+st.title("📡 Here is what's happening in tech")
+
+# 🔐 Secrets
+YOUTUBE_API_KEY = st.secrets["YOUTUBE_API_KEY"]
+# REDDIT_ID = st.secrets["REDDIT_ID"]
+# REDDIT_SECRET = st.secrets["REDDIT_SECRET"]
+# REDDIT_AGENT = "tech-tracker-agent"
+
+query = st.text_input("🔍 Search YouTube for...", value="DevOps tools 2025")
+
+if query:
+    st.subheader("📺 Recommended YouTube Videos for you")
+    for video in fetch_youtube_videos(query, YOUTUBE_API_KEY):
+        st.markdown(f"🔗 [{video['title']}]({video['url']})  \n🧑 {video['channel']} | 🕒 {video['published']}")
+
+# st.subheader("🧵 Reddit /r/technology")
+# for post in fetch_reddit_posts(REDDIT_ID, REDDIT_SECRET, REDDIT_AGENT):
+#     st.markdown(f"🔗 [{post['title']}]({post['url']}) (👍 {post['score']})")
+
+# st.subheader("📢 Hacker News")
+# for item in fetch_hackernews_stories():
+#     st.markdown(f"🔗 [{item['title']}]({item['url']})")
