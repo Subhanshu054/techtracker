@@ -5,11 +5,7 @@ from subscriber import subscription_form, display_subscriber_recommendations
 st.set_page_config(page_title="Tech Tracker", layout="wide")
 st.title("📡 Here is what's happening in tech")
 
-# 🔐 Secrets
 YOUTUBE_API_KEY = 'AIzaSyAwx9KHo2UVG3teA5lHngNAPURqppcVhVk'
-# REDDIT_ID = st.secrets["REDDIT_ID"]
-# REDDIT_SECRET = st.secrets["REDDIT_SECRET"]
-# REDDIT_AGENT = "tech-tracker-agent"
 
 tab1, tab2 = st.tabs(["🔍 Explore Topics", "📬 Subscriptions"])
 
@@ -20,10 +16,7 @@ with tab1:
         for video in fetch_youtube_videos(query, YOUTUBE_API_KEY):
             st.markdown(f"🔗 [{video['title']}]({video['url']})  \n🧑 {video['channel']} | 🕒 {video['published']}")
 
-# st.subheader("🧵 Reddit /r/technology")
-# for post in fetch_reddit_posts(REDDIT_ID, REDDIT_SECRET, REDDIT_AGENT):
-#     st.markdown(f"🔗 [{post['title']}]({post['url']}) (👍 {post['score']})")
-
-# st.subheader("📢 Hacker News")
-# for item in fetch_hackernews_stories():
-#     st.markdown(f"🔗 [{item['title']}]({item['url']})")
+with tab2:
+    subscription_form()
+    st.subheader("📌 Topic-wise Recommendations")
+    display_subscriber_recommendations(fetch_youtube_videos, YOUTUBE_API_KEY)
