@@ -5,7 +5,7 @@ from subscriber import subscription_form, display_subscriber_recommendations
 st.set_page_config(page_title="Tech Tracker", layout="wide")
 st.title("📡 Here is what's happening in tech")
 
-YOUTUBE_API_KEY = 'AIzaSyAwx9KHo2UVG3teA5lHngNAPURqppcVhVk'
+YOUTUBE_API_KEY = st.secrets["YOUTUBE_API_KEY"]
 
 tab1, tab2 = st.tabs(["🔍 Explore Topics", "📬 Subscriptions"])
 
