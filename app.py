@@ -7,7 +7,7 @@ st.set_page_config(page_title="Tech Tracker", layout="wide")
 st.title("📡 Here is what's happening in tech")
 
 # 🔐 Secrets
-YOUTUBE_API_KEY = st.secrets["YOUTUBE_API_KEY"]
+YOUTUBE_API_KEY = 'AIzaSyAwx9KHo2UVG3teA5lHngNAPURqppcVhVk'
 # REDDIT_ID = st.secrets["REDDIT_ID"]
 # REDDIT_SECRET = st.secrets["REDDIT_SECRET"]
 # REDDIT_AGENT = "tech-tracker-agent"
